@@ -1,6 +1,6 @@
 ---
 - name: Get Cisco ISO Version
-  hosts: your_cisco_device
+  hosts: all
   gather_facts: true
   tasks:
     - name: Gather facts from Cisco device
