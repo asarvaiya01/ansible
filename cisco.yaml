@@ -1,4 +1,14 @@
 ---
-- name: Run show version on remote devices
-  cisco.ios.ios_command:
-    commands: show version
+- name: Get Cisco ISO Version
+  hosts: your_cisco_device
+  gather_facts: true
+  tasks:
+    - name: Gather facts from Cisco device
+      ios_facts:
+        gather_subset:
+          - hardware
+          - config
+
+    - name: Display ISO version
+      debug:
+        var: ansible_net_version
