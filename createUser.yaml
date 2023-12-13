@@ -1,0 +1,16 @@
+---
+- name: Create New User and Save Config on Cisco Device
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Configure new user
+      ios_config:
+        lines:
+          - username "{{ cisco_username }}" privilege 15 secret "{{ cisco_password }}"
+      register: config_output
+
+    - name: Save configuration
+      ios_command:
+        commands:
+          - write memory
+      when: config_output.changed
