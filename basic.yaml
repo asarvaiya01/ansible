@@ -8,3 +8,4 @@
      ios_command:
        commands:
          - show version
+       timeout: 30  # Set the timeout to 30 seconds (adjust as needed)
