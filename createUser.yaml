@@ -6,7 +6,7 @@
     - name: Configure new user
       ios_config:
         lines:
-          - username "{{ cisco_username }}" privilege 15 secret "{{ cisco_password }}"
+          - username admin privilege 15 secret P@ssw0rd
       register: config_output
 
     - name: Save configuration
