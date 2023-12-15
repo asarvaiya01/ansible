@@ -1,0 +1,15 @@
+---
+ 
+- name: Basic Automation With Ansible Galaxy
+  connection: network_cli
+  gather_facts: true
+  hosts: all
+  tasks:
+ 
+    - name: View hostname
+      debug:
+        var: ansible_net_hostname
+ 
+    - name: View OS
+      debug:
+        var: ansible_net_version
