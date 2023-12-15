@@ -1,6 +1,6 @@
 ---
 - name: Run show version on iOS device
-  hosts: ios_devices
+  hosts: all
   gather_facts: false
   connection: network_cli
   tasks:
