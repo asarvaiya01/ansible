@@ -1,0 +1,29 @@
+    - block:
+        - name: Get running-config for all IOS and save it
+          ios_config:
+            backup: yes
+            backup_options:
+              filename: "{{ ansible_net_hostname }}_{{ ansible_host }}.cfg"
+              dir_path: "./backup/{{ date.stdout }}_at_{{ time.stdout }}/{{ansible_network_os}}"
+
+        - name: "BACKUP: IOS CONFIG to TFTP"
+          ansible.netcommon.cli_command:
+            command: copy running-config tftp://172.16.14.200
+            prompt: "Address or name of remote host \\[172.16.14.200\\]?"
+            answer: "\n"
+
+      when: ansible_network_os == 'ios'
+
+    - block:
+        - name: Get running-config for all ARISTA and save it
+          eos_config:
+            backup: yes
+            backup_options:
+              filename: "{{ ansible_net_hostname }}_{{ ansible_host }}.cfg"
+              dir_path: "./backup/{{ date.stdout }}_at_{{ time.stdout }}/{{ansible_network_os}}"
+
+        - name: "BACKUP: ARISTA CONFIG to TFTP"
+          ansible.netcommon.cli_command:
+            command: "copy running-config tftp://172.16.14.200/{{ ansible_net_hostname }}_{{ ansible_host }}.cfg"
+
+      when: "ansible_network_os == 'eos'"
