@@ -8,8 +8,8 @@
 
         - name: "BACKUP: IOS CONFIG to TFTP"
           ansible.netcommon.cli_command:
-            command: copy running-config tftp://172.16.14.200
-            prompt: "Address or name of remote host \\[172.16.14.200\\]?"
+            command: copy running-config tftp://10.1.196.159
+            prompt: "Address or name of remote host \\[10.1.196.159\\]?"
             answer: "\n"
 
       when: ansible_network_os == 'ios'
