@@ -1,0 +1,7 @@
+---
+- name: Install Cisco NX-OS Collection
+  hosts: localhost
+  tasks:
+    - name: Install cisco.nxos collection
+      community.general.command:
+        cmd: ansible-galaxy collection install cisco.nxos
