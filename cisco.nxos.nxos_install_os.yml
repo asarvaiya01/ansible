@@ -1,0 +1,17 @@
+- name: Install OS on N9k
+  hosts: my_nxos_switch
+  tasks:
+    - name: Set boot options
+      cisco.nxos.nxos_install_os:
+        system_image_file: nxos.7.0.3.I6.1.bin
+        issu: desired
+
+- name: Wait for device to come back up with new image
+  hosts: my_nxos_switch
+  tasks:
+    - wait_for:
+        port: 22
+        state: started
+        timeout: 500
+        delay: 60
+        host: '{{ inventory_hostname }}'
