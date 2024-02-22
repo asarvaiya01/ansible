@@ -1,0 +1,7 @@
+- name: Create Folder
+  file: 
+    path: /srv/www/
+    owner: user 
+    group: user 
+    mode: 0755 
+    state: directory
