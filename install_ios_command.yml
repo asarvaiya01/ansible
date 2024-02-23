@@ -1,0 +1,12 @@
+---
+- name: Install Cisco IOS Command Module
+  hosts: all
+  tasks:
+    - name: Install required Python library
+      pip:
+        name: cisco
+        state: present
+
+    - name: Ensure the module is available
+      ansible-galaxy collection install cisco.ios
+
