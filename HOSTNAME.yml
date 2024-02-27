@@ -1,5 +1,4 @@
 ---
-- collection: cisco.ios
 - name: Basic Automation With Ansible Galaxy
   connection: network_cli
   gather_facts: true
